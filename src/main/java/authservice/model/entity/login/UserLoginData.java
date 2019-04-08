@@ -1,6 +1,7 @@
 package authservice.model.entity.login;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class UserLoginData {
@@ -20,6 +21,13 @@ public class UserLoginData {
 
     @Column(name = "USER_ROLE")
     private String userRole;
+
+    @Column(name = "USER_TOKEN")
+    private String token;
+
+    @Column(name = "USER_LAST_LOGIN")
+    private Date lastLogin;
+
 
 
     public UserLoginData(String email, String userName, String password) {
@@ -68,7 +76,23 @@ public class UserLoginData {
         this.password = password;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setUserRole(Role userRole) {
+        this.userRole = userRole.getAuthority();
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }
