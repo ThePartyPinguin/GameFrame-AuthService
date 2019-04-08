@@ -6,8 +6,12 @@ import java.util.Date;
 @Entity
 public class UserLoginData {
 
-    @Column(name = "USER_EMAIL", nullable = false)
+    @Column(name = "USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private long userId;
+
+    @Column(name = "USER_EMAIL", nullable = false)
     private String email;
 
     @Column(name = "USER_USERNAME", nullable = false)
@@ -15,9 +19,6 @@ public class UserLoginData {
 
     @Column(name = "USER_PWD", nullable = false, length = 75)
     private String password;
-
-    @Column(name = "USER_ID")
-    private long userId;
 
     @Column(name = "USER_ROLE")
     private String userRole;

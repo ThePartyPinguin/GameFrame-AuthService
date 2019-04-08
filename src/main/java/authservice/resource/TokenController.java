@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/internal")
 public class TokenController {
 
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
 
-    @GetMapping("/token/{userId}/{token}")
-    public boolean checkToken(@PathVariable long userId, @PathVariable String token){
-        return this.tokenService.checkToken(userId, token);
+    @GetMapping("/token/{token}")
+    public boolean checkToken(@PathVariable String token){
+        return this.tokenService.checkToken(token);
     }
 
 }
