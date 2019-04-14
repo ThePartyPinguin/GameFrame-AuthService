@@ -14,9 +14,8 @@ public class RegisterController {
     @Autowired
     private RegisterService registerService;
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/signup")
     public Response registerNewUser(@RequestBody RegisterRequestDto dto){
-        System.out.println("hit");
         return this.registerService.registerNewUser(dto);
     }
 }

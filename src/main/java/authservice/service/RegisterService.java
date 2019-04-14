@@ -1,6 +1,8 @@
 package authservice.service;
 
+import authservice.clients.IUserService;
 import authservice.dao.IAuthDao;
+import authservice.model.dto.request.login.RegisterNewUserRequest;
 import authservice.model.dto.request.register.RegisterRequestDto;
 import authservice.model.dto.response.Response;
 import authservice.model.dto.response.register.RegisterSuccesResponse;
@@ -18,6 +20,9 @@ public class RegisterService {
 
     @Autowired
     private IAuthDao authDao;
+
+    @Autowired
+    private IUserService userService;
 
     @Autowired
     private ITokenProvider tokenProvider;
@@ -46,6 +51,9 @@ public class RegisterService {
         response.setToken(token);
 
         this.authDao.save(response);
+
+        RegisterNewUserRequest userRequest = new RegisterNewUserRequest(response.getUserId(), response.getUserName(), response.getEmail());
+        this.userService.registerNewUser(userRequest);
 
         return new RegisterSuccesResponse( 500, "user registered", response.getUserId(),response.getToken());
     }

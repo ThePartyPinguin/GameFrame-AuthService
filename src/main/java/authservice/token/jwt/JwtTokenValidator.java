@@ -3,6 +3,7 @@ package authservice.token.jwt;
 import authservice.dao.IAuthDao;
 import authservice.model.entity.login.UserLoginData;
 import authservice.token.ITokenValidator;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class JwtTokenValidator implements ITokenValidator {
 
         long userId = getUserIdFromToken(token);
 
+        if(userId == -2)
+            return false;
+
         if(userId == -1)
             return false;
 
@@ -46,6 +50,8 @@ public class JwtTokenValidator implements ITokenValidator {
             id = Long.parseLong(tmp);
         }catch (SignatureException ex){
             return - 1;
+        }catch (ExpiredJwtException ex){
+            return -2;
         }
 
         return id;
