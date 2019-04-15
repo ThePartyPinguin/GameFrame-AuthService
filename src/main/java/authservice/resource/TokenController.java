@@ -1,11 +1,11 @@
 package authservice.resource;
 
+import authservice.model.dto.response.token.TokenValidateResponse;
 import authservice.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/internal")
@@ -15,7 +15,10 @@ public class TokenController {
     private TokenService tokenService;
 
     @GetMapping("/token/{token}")
-    public boolean checkToken(@PathVariable String token){
+    @ResponseBody
+    public TokenValidateResponse checkToken(@PathVariable String token){
+
+
         return this.tokenService.checkToken(token);
     }
 

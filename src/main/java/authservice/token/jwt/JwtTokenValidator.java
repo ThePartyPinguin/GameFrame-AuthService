@@ -1,6 +1,7 @@
 package authservice.token.jwt;
 
 import authservice.dao.IAuthDao;
+import authservice.model.dto.response.token.TokenValidateResponse;
 import authservice.model.entity.login.UserLoginData;
 import authservice.token.ITokenValidator;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -23,25 +24,27 @@ public class JwtTokenValidator implements ITokenValidator {
     private IAuthDao authDao;
 
     @Override
-    public boolean validateToken(String token) {
+    public TokenValidateResponse validateToken(String token) {
 
         long userId = getUserIdFromToken(token);
 
         if(userId == -2)
-            return false;
+            return new TokenValidateResponse(501, "Token expired", false, -1);
 
         if(userId == -1)
-            return false;
+            return new TokenValidateResponse(501, "Token not valid", false, -1);
 
         UserLoginData loginData = authDao.findById(userId).orElse(null);
 
         if(loginData == null)
-            return false;
+            return new TokenValidateResponse(501, "Token not valid", false, -1);
 
-        return loginData.getToken().equals(token);
+
+
+        return new TokenValidateResponse(500, "Token valid", true, loginData.getUserId());
     }
 
-    private long getUserIdFromToken(String token){
+    public long getUserIdFromToken(String token){
 
         long id = -1;
 

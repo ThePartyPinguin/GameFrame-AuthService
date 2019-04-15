@@ -1,5 +1,6 @@
 package authservice.service;
 
+import authservice.model.dto.response.token.TokenValidateResponse;
 import authservice.token.ITokenValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +12,8 @@ public class TokenService {
     private ITokenValidator tokenValidator;
 
 
-    public boolean checkToken(String token){
-
+    public TokenValidateResponse checkToken(String token){
         return this.tokenValidator.validateToken(token);
-
-
     }
 
 

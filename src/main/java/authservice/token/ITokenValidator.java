@@ -1,7 +1,9 @@
 package authservice.token;
 
 
+import authservice.model.dto.response.token.TokenValidateResponse;
+
 public interface ITokenValidator {
 
-    boolean validateToken(String token);
+    TokenValidateResponse validateToken(String token);
 }
