@@ -17,8 +17,6 @@ public class TokenController {
     @GetMapping("/token/{token}")
     @ResponseBody
     public TokenValidateResponse checkToken(@PathVariable String token){
-
-
         return this.tokenService.checkToken(token);
     }
 

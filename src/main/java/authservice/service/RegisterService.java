@@ -2,7 +2,7 @@ package authservice.service;
 
 import authservice.clients.IUserService;
 import authservice.dao.IAuthDao;
-import authservice.model.dto.request.login.RegisterNewUserRequest;
+import authservice.model.dto.request.register.RegisterNewUserRequest;
 import authservice.model.dto.request.register.RegisterRequestDto;
 import authservice.model.dto.response.Response;
 import authservice.model.dto.response.register.RegisterSuccesResponse;

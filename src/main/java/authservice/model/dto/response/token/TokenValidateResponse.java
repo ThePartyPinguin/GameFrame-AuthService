@@ -27,4 +27,12 @@ public class TokenValidateResponse extends Response {
     public long getUserId() {
         return userId;
     }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }
