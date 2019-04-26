@@ -33,7 +33,11 @@
             <version>7.2.1.jre8</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>

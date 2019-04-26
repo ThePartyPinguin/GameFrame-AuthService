@@ -6,11 +6,13 @@ public class TokenValidateResponse extends Response {
 
     private boolean isValid;
     private long userId;
+    private String token;
 
-    public TokenValidateResponse(int responseCode, String responseMessage, boolean isValid, long userId) {
+    public TokenValidateResponse(int responseCode, String responseMessage, boolean isValid, long userId, String token) {
         super(responseCode, responseMessage);
         this.isValid = isValid;
         this.userId = userId;
+        this.token = token;
     }
 
     public TokenValidateResponse(int responseCode, String responseMessage) {
@@ -34,5 +36,13 @@ public class TokenValidateResponse extends Response {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
