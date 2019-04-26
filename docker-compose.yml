@@ -4,8 +4,6 @@ services:
   gameframe-authservice:
     build: .
     container_name: gameframe-authservice
-    ports:
-      - "8070:8070"
     expose:
       - "8070/tcp"
     networks:
