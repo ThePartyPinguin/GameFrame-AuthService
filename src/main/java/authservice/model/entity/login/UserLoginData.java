@@ -9,7 +9,7 @@ public class UserLoginData {
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long userId;
+    public long userId;
 
     @Column(name = "USER_EMAIL", nullable = false)
     private String email;

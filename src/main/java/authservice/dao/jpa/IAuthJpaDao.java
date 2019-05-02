@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface IAuthJpaDao extends JpaRepository<UserLoginData, Long>, IAuthDao {
 
-    boolean existsByUserNameOrEmail(String userName, String emai);
+    boolean existsByUserNameOrEmail(String userName, String email);
     Optional<UserLoginData> findByUserNameOrEmail(String userName, String email);
 
 }

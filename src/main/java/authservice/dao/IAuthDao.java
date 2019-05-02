@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface IAuthDao {
 
     UserLoginData save(UserLoginData data);
-    boolean existsByUserNameOrEmail(String userName, String emai);
+    boolean existsByUserNameOrEmail(String userName, String email);
 
     Optional<UserLoginData> findByUserNameOrEmail(String userName, String email);
     Optional<UserLoginData> findById(long id);
