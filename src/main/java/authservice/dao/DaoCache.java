@@ -2,10 +2,9 @@ package authservice.dao;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.FieldAnnotationsScanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -20,6 +19,8 @@ public abstract class DaoCache<J extends JpaRepository<T, I>, T, I>{
     public DaoCache() {
         this.localCache = new HashMap<>();
     }
+
+    private Logger logger = LoggerFactory.getLogger(DaoCache.class.getName());
 
     public abstract void init(J jpaRepository);
 
@@ -43,7 +44,7 @@ public abstract class DaoCache<J extends JpaRepository<T, I>, T, I>{
             return returnValue;
 
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            this.logger.error(e.getMessage());
         }
 
         return null;
