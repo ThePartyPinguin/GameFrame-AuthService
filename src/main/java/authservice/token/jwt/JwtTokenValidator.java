@@ -94,10 +94,4 @@ public class JwtTokenValidator implements ITokenValidator {
         return existingToken.equals(givenToken);
     }
 
-
-
-    private String getUserNameFromToken(String token){
-        return Jwts.parser().setSigningKey(this.secretKey).parseClaimsJws(token).getBody().getSubject();
-    }
-
 }

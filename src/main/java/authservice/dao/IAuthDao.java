@@ -1,8 +1,6 @@
 package authservice.dao;
 
 import authservice.model.entity.login.UserLoginData;
-import jdk.nashorn.internal.runtime.options.Option;
-import org.apache.catalina.User;
 
 import java.util.Optional;
 

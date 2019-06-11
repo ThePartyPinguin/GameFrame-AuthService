@@ -6,6 +6,7 @@ public class RegisterRequestDto {
     private String email;
     private String password;
 
+    //NOSONAR
     public RegisterRequestDto() {
     }
 

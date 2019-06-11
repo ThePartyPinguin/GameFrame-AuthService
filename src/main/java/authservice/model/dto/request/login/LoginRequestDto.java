@@ -1,10 +1,12 @@
 package authservice.model.dto.request.login;
 
+
 public class LoginRequestDto {
 
     private String loginName;
     private String password;
 
+    //NOSONAR
     public LoginRequestDto() {
     }
 
