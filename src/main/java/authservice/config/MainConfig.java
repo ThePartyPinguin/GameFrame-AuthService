@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Priority;
 import java.security.SecureRandom;
 
 @Configuration
