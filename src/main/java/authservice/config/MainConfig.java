@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Priority;
 import java.security.SecureRandom;
 
 @Configuration
@@ -21,19 +19,18 @@ public class MainConfig {
     @Value("${jwt.random.seed}")
     private String secureRandomSeed;
 
+    @Value("${jwt.random.strength}")
+    private int strength;
+
 
     private static SecureRandom passwordRandom;
-    private static int passwordStrenght;
-
-    @PostConstruct
-    public void init(){
-        passwordRandom = new SecureRandom(secureRandomSeed.getBytes());
-        passwordStrenght = 5;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(passwordStrenght, passwordRandom);
+        if(passwordRandom == null)
+            passwordRandom = new SecureRandom(secureRandomSeed.getBytes());
+
+        return new BCryptPasswordEncoder(this.strength, passwordRandom);
     }
 
     @Bean

@@ -13,7 +13,6 @@ public class TokenService {
 
 
     public TokenValidateResponse checkToken(String token){
-        System.out.println(token);
 
         return this.tokenValidator.validateToken(token);
     }
